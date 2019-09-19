@@ -9,8 +9,6 @@ void main(void) {
     P1REN |= BIT1;    //enables the pull up resistor at P1.1
     P1OUT |= BIT1;
 
-    volatile unsigned int j;
-
         for(;;)
         {
             int temp = P1IN & BIT1;     //Comparator for the button to register that they have been pushed
