@@ -17,7 +17,7 @@ void main(void) {
             {
                 P1OUT &= BIT1;
             }
-            else                //button pressed state, LED flashing
+            else                //button pressed state, LED On
             {
 
                 P1OUT ^= 0x01;
