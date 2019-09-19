@@ -1,5 +1,5 @@
 /* --COPYRIGHT--,BSD_EX
- * Copyright (c) 2012, Texas Instruments Incorporated
+ * Copyright (c) 2014, Texas Instruments Incorporated
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,40 +43,40 @@
  *
  * --/COPYRIGHT--*/
 //******************************************************************************
-//  MSP430G2xx3 Demo - Software Toggle P1.0
+//  MSP430FR69x Demo - Toggle P1.0 using software
 //
-//  Description; Toggle P1.0 by xor'ing P1.0 inside of a software loop.
+//  Description: Toggle P1.0 using software.
 //  ACLK = n/a, MCLK = SMCLK = default DCO
 //
-//                MSP430G2xx3
-//             -----------------
-//         /|\|              XIN|-
-//          | |                 |
-//          --|RST          XOUT|-
-//            |                 |
-//            |             P1.0|-->LED
+//           MSP430FR6989
+//         ---------------
+//     /|\|               |
+//      | |               |
+//      --|RST            |
+//        |               |
+//        |           P1.0|-->LED
 //
-//  D. Dang
-//  Texas Instruments, Inc
-//  December 2010
-//   Built with CCS Version 4.2.0 and IAR Embedded Workbench Version: 5.10
+//   William Goh
+//   Texas Instruments Inc.
+//   April 2014
+//   Built with IAR Embedded Workbench V5.60 & Code Composer Studio V6.0
 //******************************************************************************
-
 #include <msp430.h>
 
 int main(void)
 {
-  WDTCTL = WDTPW + WDTHOLD;                 // Stop watchdog timer
-  P1DIR |= 0x01;                            // Set P1.0 to output direction
+    WDTCTL = WDTPW | WDTHOLD;               // Stop WDT
 
-  for (;;)
-  {
-    volatile unsigned int i;
+    // Configure GPIO
+    P1DIR |= BIT0;                          // Clear P1.0 output latch for a defined power-on state
+    P1OUT |= BIT0;                          // Set P1.0 to output direction
 
-    P1OUT ^= 0x01;                          // Toggle P1.0 using exclusive-OR
+    PM5CTL0 &= ~LOCKLPM5;                   // Disable the GPIO power-on default high-impedance mode
+                                            // to activate previously configured port settings
 
-    i = 50000;                              // Delay
-    do (i--);
-    while (i != 0);
-  }
+    while(1)
+    {
+        P1OUT ^= BIT0;                      // Toggle LED
+        __delay_cycles(100000);
+    }
 }
