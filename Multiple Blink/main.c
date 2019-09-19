@@ -78,10 +78,10 @@ int main(void)
 
     while(1)
     {
-
+        P1OUT ^= BIT0;
         P9OUT ^= BIT7;                   // Toggle LED
-        __delay_cycles(50000);
-        P1OUT ^= BIT0;                      // Toggle LED
+        __delay_cycles(100000);
+        P1OUT ^= BIT0;                  // Toggle LED
         __delay_cycles(100000);
     }
 
