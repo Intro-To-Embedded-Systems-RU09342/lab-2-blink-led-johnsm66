@@ -1,8 +1,9 @@
 # Off Board Blink
 The code for off board blink is very similar to that of multiple blink. The difference is that instead of the ouput 
-pins being the onboard LEDs, the output pins are set to ones on the G2553 chip. Off board blink is specific to 
+pins being the onboard LEDs, the output pins are set to ones on the G2553 chip. Do to the removable chip, Off board 
+blink is specific to 
 * MSP430G2553
-This is because the G2 has a detachabel chip that can be programed and placed on an external board.
+
 
 ## Connections to chip
 - Power to VCC pin
