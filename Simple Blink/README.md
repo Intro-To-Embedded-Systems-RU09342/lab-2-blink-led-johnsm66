@@ -12,6 +12,7 @@ with a delay that XORs the LED pin with 1. Below is general code for a simple bi
 
 int main(void)
 {
+
   volatile int i;         //integer value from internal counter
 
   	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
