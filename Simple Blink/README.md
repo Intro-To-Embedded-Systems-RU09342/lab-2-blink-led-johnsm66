@@ -9,11 +9,11 @@ The libary, #include <msp430.h>, must be included for the MSP430 library to func
 the pin corresponding to the LED desired is XORed wtih a 1. To have a simple blink, there must be a simple loop
 with a delay that XORs the LED pin with 1. Below is general code for a simple bink.
 
+```
+int main(void)
+{
 
-	int main(void)
-	{
-
-  	volatile int i;         //integer value from internal counter
+  volatile int i;         //integer value from internal counter
 
   	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
   
@@ -29,4 +29,5 @@ with a delay that XORs the LED pin with 1. Below is general code for a simple bi
   	    do i--;           // Initiates a delay between toggling bit 0
   	    while (i != 0);   //
   	}
-	}
+}
+```
