@@ -1,5 +1,5 @@
 ## Button Blink
-Button is very similar to simple blink. The difference is that the condition if the a button is pressed is used to 
+Button blink is very similar to simple blink. The difference is that the condition if the a button is pressed is used to 
 toggle the LED on. The microprocessors used were, 
 * MSP430G2553
 * MSP430FR6989
