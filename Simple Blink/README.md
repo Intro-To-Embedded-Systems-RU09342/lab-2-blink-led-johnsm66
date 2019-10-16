@@ -8,7 +8,9 @@ was written for
 The libary, #include <msp430.h>, must be included for the MSP430 library to function. To toggle on an LED on, 
 the pin corresponding to the LED desired is XORed wtih a 1. To have a simple blink, there must be a simple loop
 with a delay that XORs the LED pin with 1. Below is general code for a simple bink. When using the FR6989, the line 
-of code must be used, "PM5CTL0 &= ~LOCKLPM5; // Disable the GPIO power-on default high-impedance mode."
+of code must be used, 
+
+PM5CTL0 &= ~LOCKLPM5; // Disable the GPIO power-on default high-impedance mode
 
 int main(void)
 {
